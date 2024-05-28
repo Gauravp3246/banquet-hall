@@ -1,0 +1,62 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Banquets{% endblock %}
+
+{% block body %}
+<div style=" background-color: rgba(218, 165, 32, 0.664)  ; ">
+
+<div class="container-fluid" style="padding-top:  50px;">
+    <h1 class="text-center text-danger " s><strong>Banquets</strong></h1>
+</div>
+<br>
+<div class="container">
+    <div class="col-sm-12">
+        <form class="form-inline" role="search" method="get" action="">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control input-lg" name="q" value="{{ request.GET.q }}" placeholder="Search Banquet" style="width: 75%; font-size: 20px;" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="submit">Search</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        {% for rest in r_object %}
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="thumbnail">
+                <div class="media" style="border-radius: 10px; border-style: groove; border-width: 2px;">
+                    <a href="{% url 'categories' rest.id %}" class="pull-left">
+                        <img src="{{ rest.r_logo.url }}" class="img-thumbnail img-responsive" alt="{{ rest.rname }}" style="height: 130px; width: 130px;">
+                    </a>
+                    <div class="media-body pl-3" >
+                        <a href="{% url 'categories' rest.id %}" style="text-decoration: none;">
+                            <h4 class="media-heading text-info"><strong>{{ rest.rname }}</strong></h4>
+                        </a>
+                        <p>Best For : {{ rest.info }}</p>
+                        <p>Min order: &#x20b9;{{ rest.min_ord }}</p>
+                        <p>Status: <strong class="{{ rest.status|lower }}">{{ rest.status }}</strong></p>
+                        <p>AC: <strong class="{{ rest.ac|lower }}">{{ rest.ac }}</strong></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">No banquets found.</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<footer style="display: flex; justify-content: center; padding: 5px; background-color: #921e1e; color: #fff; margin-top: 170px; position: relative;">
+    <p>COPYRIGHT © 2024 BANQUET HALL. POWERED BY EACHBASE</p>
+  </footer>
+
+
+</div>
+{% endblock %}

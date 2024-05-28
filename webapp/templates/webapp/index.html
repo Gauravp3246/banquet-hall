@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+   {% load static %}
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{% block title %}BanquetApp{% endblock title %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/bootstrap.min.css'%}">
+  <link rel="icon" type="image/x-icon" href="/static/webapp/images/restaurant 1.jpg">
+  <link href="/static/webapp/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' >
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <!--Animation-->
+  <script src="/static/webapp/js/wow.min.js"></script>
+  <link href="static/webapp/css/animate.css" rel='stylesheet' type='text-center/css' />
+
+<style type="text/css">
+  .big-banner{
+    /* background-image: url('/static/webapp/images/restaurant 1.jpg'); */
+    height: 100vh;
+    /* background: linear-gradient(45deg,red,green,yellow,blue,crimson) 0 0 / 1000% no-repeat; */
+    animation:  animate 2s  infinite;
+    /* background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; */
+    
+  }
+  .i-am-center{
+    margin-left:26%; max-width: 100%;
+  }
+  .borders{
+    background-color: blue;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .wrapper {
+    min-height: 100%;
+    height: 100%;
+    margin: 0 auto -155px; 
+}
+  .footer, .push {
+    height: 155px; 
+}
+  .thumbnail{
+    margin-top: 30px;
+  }
+
+  .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 50px;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+
+#c1{
+  background-image: url('/static/webapp/images/Lawns.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 500px;
+}
+
+#c2{
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: justify;
+  color: white;
+  font-size: 1.1em;
+}
+/* .animations{
+
+  height: 100vh;
+  background: linear-gradient(45deg,red,green,yellow,blue,crimson) 0 0 / 1000% no-repeat;
+ animation:  animate 5s ease infinite;
+} */
+  
+
+
+@keyframes animate {
+  0%{
+  background-position: 0 30%, 0 0;
+  background-color: #921e1e;
+  }
+ 50%{
+  background-position: 100% 70%, 0 0;
+  background-color: rgb(50, 60, 205);
+  }
+ 100%{
+  background-position: 0 30%, 0 0;
+  background-color: #b9a730;
+ }
+}
+
+
+</style>
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-fixed-top">
+   		 <div class="container-fluid">
+   		 	 <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+        <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="{% url 'banquet'%}">&nbsp; <strong>For Customer</strong> </a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+        <a class="mx-auto" href="#">
+            <img  src="/static/webapp/images/logo.png" style="height: 80px;" alt="Home" class="rounded-circle img-responsive">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+        <ul class="navbar-nav mr-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'rlogin'%}"> &nbsp;<strong>For Banquet</strong> </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</nav>
+
+<div class="animations">
+
+<div class="jumbotron big-banner" style="height: 500px; width: 100%; padding-top:100px;" >
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="col4 text-light ">
+					<h1 style="font-style:italic; font-family:'Times New Roman', Times, serif; "><strong>Feeling Hungry</strong></h1>
+					<h2 style="font-family: 'Times New Roman', Times, serif;"><strong>Register Now<br/>and<br/>Order Online</strong></h2>
+				</div>
+			<br>
+      <button type="button" class="btn btn-success btn-lg" style="background-color: goldenrod; border: 3px groove rgb(255, 251, 0) "><strong><a href="{% url 'register'%}" class="text-light">Booking</a></strong></button>
+			</div>
+        <div class="col">
+          <div class="col4 text-light">
+            <h1 style="font-style:italic; font-family:'Times New Roman', Times, serif; "><strong>Be a Partner</strong></h1>
+          <h2 style="font-family: 'Times New Roman', Times, serif;"><strong>Join Us Today<br/>and<br>Increase Your Sale</strong></h2>
+        </div>
+        <br>
+        <button type="button" class="btn btn-success btn-lg" style="background-color: goldenrod; border: 3px groove rgb(255, 251, 0) "><strong><a href="{% url 'rregister'%}" class="text-light">Customer</a></strong></button>
+      </div>
+      </div>
+    </div>
+
+	</div>
+</div>
+
+<div class="block" style="background-color: #921e1e; padding: 20px ; text-align: center; color: #fff; font-size: 2em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-top: -32px;">Banquet Hall</div>
+
+  <div class="row">
+    <div class="column" id="c2" style="background-color:#b9a730;"><h2 style="color: white; text-align: center;font-weight: 700;">Venue</h2><br>
+    <p>Welcome to Banquets the premium event venue in Nashik. Spanning a breathtaking 45,000 sq.ft area Banquets is your access to the best, unrivalled grandeur, comfort, and luxury. Weddings, corporate events, conferences, exhibitions, parties, and engagements Banquets offers you more than a decade’s experience in conceptualizing and organizing events of varied scales.</p>
+    <p>Our sprawling banquet for 1000 pax backed by a beautifully landscaped outdoor dining area can comfortably accommodate all your guests. With our proximity to the leading communication hubs of Nashik railway stations, express highway, and the metro we have ended up enjoying unprecedented endorsement from our clients. Right from reserving the dates and planning and scheduling the events to coordinate with décor personnel our professionals are here to offer you seamless assistance from start to finish.</p>
+   
+    
+
+   
+     
+    </div>
+    <div class="column" id="c1" >
+
+      
+  </div>
+
+</div>
+
+<div class="container col-md-9">
+		<div class="top-restaurent-head">
+						<h3>Top Banquet Hall</h3>
+		</div> 
+		<div class="row">
+			 
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/banquet_1.jpg" style="height: 200px; width: 300px; border-radius: 10px; border:  groove 5px grey;" class="img-responsive" alt="" />
+                    </a>
+
+                    </div>
+              </div>
+              <br>
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/banquet_2.jpg" style="height: 200px; width: 300px; border-radius: 10px; border:  groove 5px grey;"  class="img-responsive" alt="" />
+                    </a>
+
+                    </div>
+              </div>
+              <br>
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/banquet_3.jpg" style="height: 200px; width: 300px; border-radius: 10px; border:  groove 5px grey;" class="img-responsive" alt="" />
+                    </a>
+
+                    </div>
+              </div>
+              <br>
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/banquet_4.jpg" style="height: 200px; width: 300px; border-radius: 10px; border:  groove 5px grey;"  class="img-responsive" alt="" />
+                    </a>
+
+                    </div>
+              </div>
+              <br>
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/banquet_5.jpg" style="height: 200px; width: 300px; border-radius: 10px; border:  groove 5px grey;" class="img-responsive" alt="" />
+                    </a>
+
+                    </div>
+              </div>
+                    
+		</div>
+
+	</div>
+
+<br>
+<br>
+<div class="container col-md-9">
+	<div class="top-cuisine-head">
+			<h3>Top Cuisines</h3>
+	</div>
+	<div class="row">
+		 <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/cuisine1.jpg" class="img-responsive" alt="" />
+                    </a>
+                    </div>
+                    <div class="caption border col-sm-4">
+                    		<h5 class="text-secondary"><strong>Pizza</strong></h5>
+                    </div>
+              </div>
+               <div class="col-md-4 mb-3">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/cuisine2.jpg" class="img-responsive" alt="" />
+                    </a>
+                    </div>
+                    <div class="caption border col-sm-4">
+                    		<h5 class="text-secondary"><strong>Burger</strong></h5>
+                    </div>
+              </div>
+
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/cuisine3.jpg" class="img-responsive" alt="" />
+                    </a>
+                    </div>
+                    <div class="caption border col-sm-6">
+                    		<h5 class="text-secondary"><strong>Dough Nut</strong></h5>
+                    </div>
+              </div>
+               <div class="col-md-4 mb-3">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/cuisine4.jpg" class="img-responsive" alt="" />
+                    </a>
+                    </div>
+                    <div class="caption border col-sm-4">
+                    		<h5 class="text-secondary"><strong>Curry</strong></h5>
+                    </div>
+              </div>
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/cuisine5.jpg" class="img-responsive" alt="" />
+                    </a>
+                    </div>
+                    <div class="caption border col-sm-4">
+                    		<h5 class="text-secondary"><strong>trips</strong></h5>
+                    </div>
+              </div>
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/cuisine6.jpg" class="img-responsive" alt="" />
+                    </a>
+                    </div>
+                    <div class="caption border col-md-6">
+                    		<h5 class="text-secondary"><strong>Frawn Rice</strong></h5>
+                    </div>
+              </div>
+               <div class="col-md-4 ">
+                    <div class="thumbnail">
+                    	<a href="">
+                    	<img src="/static/webapp/images/cuisine7.jpg" class="img-responsive" alt="" />
+                    </a>
+                    </div>
+                    <div class="caption border col-md-4">
+                    		<h5 class="text-secondary"><strong>Fingers</strong></h5>
+                    </div>
+              </div>
+                   <div class="col-md-6 ">
+                    <div class="thumbnail">
+                    	<img src="/static/webapp/images/cuisine8.jpg" class="img-responsive" alt="" />
+                    <div class="caption border col-md-3">
+                        <h5 class="text-secondary"><strong>Cuisine</strong></h5>
+                    </div>
+                    </div>
+                    
+              </div>
+              <div class="clearfix"></div>
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+				
+<script type="text/javascript" src="{%static 'webapp/js/jquery.min.js'%}">
+	</script>
+	<script type="text/javascript" src="{%static 'webapp/js/bootstrap.min.js'%}"></script>
+<script>
+	new WOW().init();
+</script>
+<script src="/static/webapp/js/simpleCart.min.js"> </script>
+<script type="text/javascript" src="/static/webapp/js/move-top.js"></script>
+<script type="text/javascript" src="/static/webapp/js/easing.js"></script>
+
+
+
+<footer style="display: flex; justify-content: center; padding: 5px; background-color: #921e1e; color: #fff;">
+  <p>COPYRIGHT © 2024 BANQUET HALL. POWERED BY EACHBASE</p>
+</footer>
+</body>
+</html>

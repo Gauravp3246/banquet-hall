@@ -1,0 +1,169 @@
+
+<style>
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+ 
+
+    .banner{
+
+        /* position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	pointer-events: none; */
+
+    background-image: url('/static/webapp/images/hall1.jpg'); 
+     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 680px;
+    position: relative;
+    
+  }
+/* 
+  .round {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: yellow;
+	border: 5px solid yellow;
+	opacity: 0;
+	box-shadow: 0 0 100px yellow, 0 0 10px yellow, 0 0 20px yellow;
+	animation: animate 4s linear infinite, ani-2 2s linear infinite;
+}
+.round:nth-child(1) {
+	left: 5%;
+	animation-delay: 0.5s;
+}
+.round:nth-child(2) {
+	left: 65%;
+	animation-delay: 1s;
+}
+.round:nth-child(3) {
+	left: 90%;
+	animation-delay: 1.5s;
+}
+.round:nth-child(4) {
+	left: 18%;
+	animation-delay: 2s;
+}
+.round:nth-child(5) {
+	left: 93%;
+	animation-delay: 2.5s;
+}
+.round:nth-child(6) {
+	left: 52%;
+	animation-delay: 3s;
+}
+.round:nth-child(7) {
+	left: 65%;
+	animation-delay: 3.5s;
+}
+.round:nth-child(8) {
+	left: 35%;
+	animation-delay: 4s;
+}
+.round:nth-child(9) {
+	left: 85%;
+	animation-delay: 4.5s;
+}
+.round:nth-child(10) {
+	left: 45%;
+	animation-delay: 5s;
+}
+.round:nth-child(11) {
+	left: 36%;
+	animation-delay: 5.5s;
+}
+.round:nth-child(12) {
+	left: 72%;
+	animation-delay: 6s;
+}
+.round:nth-child(13) {
+	left: 14%;
+	animation-delay: 6.5s;
+}
+.round:nth-child(14) {
+	left: 70%;
+	animation-delay: 7s;
+}
+@keyframes animate {
+	0% {
+		top: 0;
+		opacity: 1;
+	}
+	20% {
+		top: 20%;
+		opacity: 0.8;
+	}
+	40% {
+		top: 40%;
+		opacity: 0.6;
+	}
+	60% {
+		top: 60%;
+		opacity: 0.4;
+	}
+	80% {
+		top: 80%;
+		opacity: 0.2;
+	}
+	100% {
+		top: 100%;
+		opacity: 0;
+	}
+}
+
+@keyframes ani-2 {
+	0%, 100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(2.5);
+	}
+} */
+</style>
+<body>
+    <div class="banner">
+    <!-- <div class="round"></div> 
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div>
+    <div class="round"></div> -->
+
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h1 style="color: rgb(245, 210, 12); margin-bottom: 20px; font-size: 2.5em; font-family:Arial, Helvetica, sans-serif ">Categories</h1>
+    <ul style="list-style: none; padding: 0; display: flex; justify-content: center; align-items: center;">
+        {% for category in categories %}
+            <li style="margin: 10px; background: rgb(133, 7, 7); border-radius: 50%; width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <a href="{% url 'menu' banquet_id category.id %}" style="text-align: center; display: block; color: white; text-decoration: none;">
+                    <div style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">{{ category.category_name }}</div> <!-- Increased margin-bottom to 20px -->
+                    <div style="font-size: 14px; font-weight: bold; color: rgba(255, 255, 255, 0.8);">{{ category.description }}</div>
+                </a>
+            </li>
+        {% empty %}
+            <li>No categories found. <a href="{% url 'create_category' %}" style="color: white;">Create a new category</a>.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+</div>
+
+  </body>
+
+
+ 

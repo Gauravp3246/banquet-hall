@@ -1,0 +1,71 @@
+<body style="background-color: bisque; width: 100%;">
+
+{% extends 'webapp/base.html' %}
+{% block title %} Cart {% endblock %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <h3 class="text-info"><strong>Order Information :</strong></h3>
+    <br>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </thead>
+        {% for x in items %}
+        <tr><td>{{ x.0 }}</td><td>{{ x.1 }}</td><td>&#x20b9; {{ x.2 }}</td></tr>
+        {% endfor %}
+    </table>
+    <br>
+    <span><b>Total price: </b></span><span>&#x20b9; {{ totalprice }}</span>
+    <br>
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <span><strong>Your Message:</strong></span>
+        <br>
+        <br>
+        <div><input type="text" name="address" style="width:60%; height: 60px;" required/></div>
+        <input type="hidden" name="oid" value="{{ oid }}">
+        <br>
+        <input type="submit" class="btn btn-success btn-lg" value="Order" name="submit" id="submit">
+    </form>
+</div>
+
+
+<footer style="display: flex; justify-content: center; padding-top: 8px; background-color: #921e1e; margin-top: 130px;  color: #fff; height: 40px;">
+	<p>COPYRIGHT © 2024 BANQUET HALL. POWERED BY EACHBASE</p></footer>
+    </body>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        "key": "{{ RAZORPAY_API_KEY }}",
+        "amount": "{{ totalprice }}",
+        "currency": "INR",
+        "name": "Your Company Name",
+        "description": "Order #{{ oid }}",
+        "order_id": "{{ razorpay_order_id }}",
+        "handler": function (response){
+            // Handle the payment success process here
+            alert('Payment successful. Payment ID: ' + response.razorpay_payment_id);
+            window.location.href = '/orderplaced/';
+        },
+        "prefill": {
+            "name": "{{ request.user.get_full_name }}",
+            "email": "{{ request.user.email }}",
+            "contact": "{{ request.user.username }}"
+        },
+        "theme": {
+            "color": "#F37254"
+        }
+    };
+    var rzp = new Razorpay(options);
+    document.getElementById('submit').onclick = function(e){
+        rzp.open();
+        e.preventDefault();
+    }
+</script>
+{% endblock %}
